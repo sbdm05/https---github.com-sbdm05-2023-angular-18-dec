@@ -1,5 +1,40 @@
-<h1>test depuis app component</h1>
-<!-- afficher une variable -->
-<!-- string interpolation -->
-<p>{{title}}</p>
 
+
+
+<!-- afficher des composants dynamiques -->
+<header class="fixed-top">
+
+  <!-- <app-header></app-header> -->
+
+  <span (click)='onClick()'>
+    <!-- utiliser des composants qui contiennent des icones -->
+    <app-icon-close *ngIf='open'></app-icon-close>
+    <app-icon-nav *ngIf='!open'></app-icon-nav>
+
+  </span>
+
+</header>
+
+<main [ngClass]="{'close-aside' : !open}">
+  <div class="shadow position-fixed">
+  </div>
+
+  <!-- ICI LE MENU -->
+  <aside>
+    <div class="scroller">
+      <app-nav></app-nav>
+
+    </div>
+  </aside>
+
+  <!-- ICI LA PARTIE CENTRALE DE LA PAGE -->
+  <div class="page">
+    <div class="contents">
+     <router-outlet></router-outlet>
+    </div>
+    <footer>
+      footer
+    </footer>
+  </div>
+
+</main>

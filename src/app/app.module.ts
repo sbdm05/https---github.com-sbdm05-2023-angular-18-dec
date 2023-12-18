@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconsModule } from './icons/icons.module';
 
 // @ = decorateur = nature de cette classe
 @NgModule({
@@ -13,7 +17,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
+    NgbModule,
+    FontAwesomeModule,
+    IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
