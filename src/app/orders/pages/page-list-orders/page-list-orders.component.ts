@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -9,7 +10,12 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class PageListOrdersComponent {
   // créer un tableau vide
-  public tab!: Order[];
+  // public tab!: Order[];
+
+  // création d'une propriété pour stocker observable
+
+  public tab$!: Observable<Order[]>
+
 
   // ici tableau de string
   public headers: string[] = [
@@ -28,11 +34,9 @@ export class PageListOrdersComponent {
     // this.ordersService.getDatas().subscribe((data) => {
     //   console.log(data);
     // });
-    this.ordersService.getOrders().subscribe((data) => {
-      //console.log(data);
-      this.tab = data;
-      //console.log(this.tab);
-    });
+    // utilisation du pipe async
+    this.tab$ = this.ordersService.getOrders()
+
   }
 
   // remplacée par Pipe total

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BtnComponent } from './components/btn/btn.component';
 import { TotalPipe } from './pipes/total.pipe';
-
+import { StateDirective } from './directives/state.directive';
+import { RouterModule } from '@angular/router';
 
 // decorateur @NgModule
 @NgModule({
@@ -10,13 +11,14 @@ import { TotalPipe } from './pipes/total.pipe';
     // aucun composant
 
     BtnComponent,
-    TotalPipe
+    TotalPipe,
+    StateDirective,
   ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    TotalPipe
-  ]
+  imports: [CommonModule, RouterModule],
+  exports: [BtnComponent, TotalPipe, StateDirective],
 })
-export class SharedModule { }
+export class SharedModule {}
+
+
+// href = rafraichir la page
+// liens externes

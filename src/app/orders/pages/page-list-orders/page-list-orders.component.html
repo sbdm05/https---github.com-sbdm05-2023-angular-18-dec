@@ -4,7 +4,7 @@
 
 
 <!-- itérer dans le tableau *ngFor -->
-<table class="table">
+<table class="table" *ngIf="tab$ | async as tab; else loading">
   <thead>
     <tr>
       <th *ngFor='let header of headers' scope="col">{{header}}</th>
@@ -18,10 +18,30 @@
       <td>{{obj.client | uppercase}}</td>
       <td>{{obj.nbJours}}</td>
       <td>{{obj.tjmHt}}</td>
-      <td>{{ obj.tjmHt | total :obj.nbJours}}</td>
-      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva}}</td>
-      <td>{{obj.state}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours | currency}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva | currency}}</td>
+      <td appState [stateObj]='obj.state'>{{obj.state}}</td>
     </tr>
-
   </tbody>
+  <!-- faire passer le label + style + lien de redirection -->
+  <app-btn
+  label='Ajouter'
+  styleBtn='btn btn-primary'
+  route='/orders/add'
+  >
+  </app-btn>
 </table>
+
+<ng-template #loading>
+  En chargement
+</ng-template>
+
+
+<!--
+  "tab$ | async"
+
+  .subscribe()
+
+
+ -->
+

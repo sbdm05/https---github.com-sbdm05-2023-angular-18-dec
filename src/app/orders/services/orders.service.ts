@@ -18,16 +18,20 @@ export class OrdersService {
   }
 
   // this.http.get
-  public getDatas(){
+  public getDatas() {
     // observable
     return this.http.get('https://jsonplaceholder.typicode.com/todos');
   }
 
   // creer methode getOrders() vers db.json
-  public getOrders(): Observable<Order[]>{
+  public getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.url);
   }
 
+  // créer methode postOrder(obj: Order)
+  //  return this.http.post<Order>(this.url, obj);
 
-
+  public postOrder(obj: Order){
+    return this.http.post<Order>(this.url, obj);
+  }
 }
