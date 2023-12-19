@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconsModule } from './icons/icons.module';
+import { HttpClientModule } from '@angular/common/http';
 
 // @ = decorateur = nature de cette classe
 @NgModule({
@@ -21,7 +22,8 @@ import { IconsModule } from './icons/icons.module';
     CoreModule,
     NgbModule,
     FontAwesomeModule,
-    IconsModule
+    IconsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

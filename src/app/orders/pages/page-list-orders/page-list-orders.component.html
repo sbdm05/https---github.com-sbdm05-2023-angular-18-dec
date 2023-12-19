@@ -1,1 +1,27 @@
-<p>page-list-orders works!</p>
+<!-- <p *ngFor='let i of tab'>
+  {{ i.client }}- {{ i.typePresta}}
+</p> -->
+
+
+<!-- itérer dans le tableau *ngFor -->
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor='let header of headers' scope="col">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor='let obj of tab'>
+      <td>Action</td>
+      <td>{{obj.typePresta | uppercase }}</td>
+      <td>{{obj.client | uppercase}}</td>
+      <td>{{obj.nbJours}}</td>
+      <td>{{obj.tjmHt}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva}}</td>
+      <td>{{obj.state}}</td>
+    </tr>
+
+  </tbody>
+</table>
