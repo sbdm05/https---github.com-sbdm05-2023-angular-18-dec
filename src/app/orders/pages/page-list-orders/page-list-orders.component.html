@@ -13,7 +13,7 @@
   <tbody>
 
     <tr *ngFor='let obj of tab'>
-      <td>Action</td>
+      <td><button (click)='onEdit(obj.id)'>Editer</button></td>
       <td>{{obj.typePresta | uppercase }}</td>
       <td>{{obj.client | uppercase}}</td>
       <td>{{obj.nbJours}}</td>

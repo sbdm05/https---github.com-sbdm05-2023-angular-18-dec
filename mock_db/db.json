@@ -2,16 +2,6 @@
   "orders": [
     {
       "tjmHt": 1200,
-      "nbJours": 20,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "formation",
-      "client": "Capgemini2",
-      "comment": "RAS",
-      "id": 1
-    },
-    {
-      "tjmHt": 1200,
       "nbJours": 10,
       "tva": 20,
       "state": "CONFIRMED",
@@ -22,53 +12,23 @@
     },
     {
       "tjmHt": 1200,
-      "nbJours": 1,
+      "typePresta": "formation",
+      "nbJours": 2,
       "tva": 20,
       "state": "CANCELLED",
-      "typePresta": "formation",
       "client": "Capgemini",
       "comment": null,
       "id": 3
     },
     {
       "tjmHt": 1200,
-      "nbJours": 12,
-      "tva": 20,
-      "state": "CONFIRMED",
-      "typePresta": "formation",
-      "client": "Capgemini",
-      "comment": "RAS",
-      "id": 4
-    },
-    {
-      "tjmHt": 1200,
+      "typePresta": "coaching",
       "nbJours": 8,
       "tva": 20,
       "state": "OPTION",
-      "typePresta": "coaching",
       "client": "Modis",
       "comment": "RAS",
       "id": 5
-    },
-    {
-      "tjmHt": 1200,
-      "typePresta": null,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "client": "test 17:16",
-      "comment": null,
-      "id": 6
-    },
-    {
-      "tjmHt": 1200,
-      "typePresta": null,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "client": null,
-      "comment": null,
-      "id": 7
     }
   ],
   "clients": [

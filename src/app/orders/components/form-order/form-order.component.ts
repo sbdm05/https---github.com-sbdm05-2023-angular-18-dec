@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 
@@ -13,6 +13,7 @@ export class FormOrderComponent {
   public form!: FormGroup;
   @Input() objOrder!: Order;
   @Output() submitted = new EventEmitter();
+  @Output() deleted = new EventEmitter();
 
   // convertir enum en tableau
   public states = Object.values(StateOrder);
@@ -22,8 +23,18 @@ export class FormOrderComponent {
   ngOnInit() {
     this.form = this.fb.group({
       tjmHt: [this.objOrder.tjmHt],
-      typePresta: [this.objOrder.typePresta],
-      nbJours: [this.objOrder.nbJours],
+      typePresta: [
+        this.objOrder.typePresta,
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
+      nbJours: [
+        this.objOrder.nbJours,
+        [Validators.required, Validators.min(2), Validators.max(10)],
+      ],
       tva: [this.objOrder.tva],
       state: [this.objOrder.state],
       client: [this.objOrder.client],
@@ -36,5 +47,10 @@ export class FormOrderComponent {
     console.log(this.form.value); // objet complet
     // envoyer le formulaire au composant parent
     this.submitted.emit(this.form.value);
+  }
+
+  onDelete() {
+  console.log('supprimer');
+  this.deleted.emit();
   }
 }

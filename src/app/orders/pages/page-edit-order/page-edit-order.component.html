@@ -1,4 +1,23 @@
 
-<app-form-order></app-form-order>
+<div *ngIf="obj">
+  <app-form-order
+  [objOrder]='obj'
+  (submitted)='onEdit($event)'
+  (deleted)='onOpenModal()'
+  ></app-form-order>
+</div>
 
-<!-- passer un order existant -->
+
+<app-modal >
+  <!-- Contenu de la modal -->
+  <p class='modal-description'>Contenu de la modal affiché grâce à ng-content</p>
+  <!-- Boutons -->
+  <div class="modal-buttons">
+    <button (click)="closeModal()">Fermer</button>
+    <button (click)='onDelete(obj)'>CONFIRMER</button>
+  </div>
+</app-modal>
+
+
+
+

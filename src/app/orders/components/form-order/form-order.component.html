@@ -6,6 +6,9 @@
       <input type="text" class="form-control" id="typePresta" formControlName='typePresta' >
     </div>
 
+    <!-- créer un element html avec *ngIf = directive -->
+    <div *ngIf="form.controls['typePresta'].errors?.['minlength']">Ce champ doit contenir au minimum 5 caractères</div>
+    <div *ngIf="form.controls['typePresta'].errors?.['maxlength']">Ce champ doit contenir au maximum 10 caractères</div>
 
 
     <div class="form-group">
@@ -17,6 +20,10 @@
       <label for="nbJours">nbJours</label>
       <input type="number" class="form-control" id="nbJours" formControlName='nbJours'>
     </div>
+
+    <!-- créer un element html avec *ngIf = directive -->
+    <div *ngIf="form.controls['nbJours'].errors?.['min']">Ce champ doit contenir au minimum 2 jours</div>
+    <div *ngIf="form.controls['nbJours'].errors?.['max']">Ce champ doit contenir au maximum 10 jours</div>
 
     <div class="form-group">
       <label for="tjmHt">tjmHt</label>
@@ -42,10 +49,18 @@
       <textarea class="form-control" id="comment" formControlName='comment'></textarea>
     </div>
 
-    <button class='btn btn-primary' type='submit'>Valider</button>
+    <button [disabled]='this.form.invalid' class='btn btn-primary' type='submit'>Valider</button>
+
+
 
   </form>
 </div>
 
+<!-- attention de ne pas passer cet événement dans la balise <form> -->
+  <div class="d-grid gap-2 col-6 mx-auto" *ngIf='this.objOrder.id'>
+    <button class="btn btn-danger" (click)='onDelete()'>EFFACER</button>
+  </div>
+
+invalid : {{ this.form.invalid}}
 
 

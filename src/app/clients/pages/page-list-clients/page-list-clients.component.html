@@ -1,1 +1,34 @@
-<p>page-list-clients works!</p>
+
+
+
+<table class="table" *ngIf="datas$ | async as tab">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor='let header of headers'>
+        {{ header }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor='let obj of tab'>
+      <th>Editer</th>
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.name}}</td>
+      <td> {{ obj.state}}</td>
+      <td> {{ obj.totalCaHt}}</td>
+      <td> total TTC</td>
+      <!-- <td appStateClient [stateObj]='obj.state'>
+        <select class="form-control" id="state">
+          <option [selected]='state === obj.state' *ngFor='let state of states' [value]='state'> {{state}} </option>
+        </select>
+      </td> -->
+    </tr>
+
+  </tbody>
+</table>
+<app-btn label='Ajouter' routeInfo='/clients/add' styleBtn='btn btn-warning'>
+</app-btn>
+
+
+

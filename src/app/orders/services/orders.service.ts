@@ -34,4 +34,17 @@ export class OrdersService {
   public postOrder(obj: Order){
     return this.http.post<Order>(this.url, obj);
   }
+
+  public getObjById(id: number): Observable<Order>{
+    return this.http.get<Order>(`${this.url}/${id}`);
+  }
+
+  public update(obj: Order): Observable<Order>{
+    return this.http.put<Order>(`${this.url}/${obj.id}`, obj);
+  }
+
+  public delete(id: number){
+    return this.http.delete<Order>(`${this.url}/${id}`);
+  }
+
 }

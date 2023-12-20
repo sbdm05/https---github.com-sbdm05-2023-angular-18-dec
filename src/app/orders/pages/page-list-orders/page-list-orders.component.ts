@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
@@ -14,8 +15,7 @@ export class PageListOrdersComponent {
 
   // création d'une propriété pour stocker observable
 
-  public tab$!: Observable<Order[]>
-
+  public tab$!: Observable<Order[]>;
 
   // ici tableau de string
   public headers: string[] = [
@@ -29,14 +29,13 @@ export class PageListOrdersComponent {
     'State',
   ];
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService, private router: Router) {
     //console.log(this.ordersService.sumUp(1, 2));
     // this.ordersService.getDatas().subscribe((data) => {
     //   console.log(data);
     // });
     // utilisation du pipe async
-    this.tab$ = this.ordersService.getOrders()
-
+    this.tab$ = this.ordersService.getOrders();
   }
 
   // remplacée par Pipe total
@@ -46,4 +45,9 @@ export class PageListOrdersComponent {
   //   if (tva) return val * coef * (1 + tva / 100);
   //   return val * coef;
   // }
+
+  public onEdit(id: number) {
+    // redirection vers orders/edit
+    this.router.navigate(['orders', 'edit', id]);
+  }
 }
