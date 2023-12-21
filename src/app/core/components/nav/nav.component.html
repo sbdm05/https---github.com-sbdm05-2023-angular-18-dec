@@ -35,4 +35,19 @@ true}">Ajouter un client</a>
   <a class="nav-link" routerLink='/clients/edit' routerLinkActive='active' [routerLinkActiveOptions]="{exact:
 true}">Editer un client</a>
 </li>
+
+<li class="nav-item">
+  <a class="nav-link" routerLink='/orders/obs-froid' routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+true}">Obs froid</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" routerLink='/orders/obs-subject' routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+true}">Obs Subject</a>
+</li>
 </ul>
+
+<!-- pour illustrer le comportement avec href -->
+<button (click)='onAdd()'>INCREMENTER</button>
+
+
+{{ counter}}

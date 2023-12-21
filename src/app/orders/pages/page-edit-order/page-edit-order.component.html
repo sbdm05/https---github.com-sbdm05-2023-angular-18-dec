@@ -8,7 +8,7 @@
 </div>
 
 
-<app-modal >
+<app-modal *ngIf='isModalOpen' >
   <!-- Contenu de la modal -->
   <p class='modal-description'>Contenu de la modal affiché grâce à ng-content</p>
   <!-- Boutons -->

@@ -1,6 +1,10 @@
-<!-- <p *ngFor='let i of tab'>
-  {{ i.client }}- {{ i.typePresta}}
-</p> -->
+<p>
+  <a routerLink='/orders/add'>Lien avec routerLink</a>
+</p>
+<p>
+  <a href='/orders/add'>Lien avec href</a>
+</p>
+
 
 
 <!-- itérer dans le tableau *ngFor -->
@@ -13,14 +17,21 @@
   <tbody>
 
     <tr *ngFor='let obj of tab'>
-      <td><button (click)='onEdit(obj.id)'>Editer</button></td>
+      <td><app-btn styleBtn='btn btn-warning' label='Editer' (click)='onEdit(obj.id)'>Editer</app-btn></td>
       <td>{{obj.typePresta | uppercase }}</td>
       <td>{{obj.client | uppercase}}</td>
       <td>{{obj.nbJours}}</td>
       <td>{{obj.tjmHt}}</td>
       <td>{{ obj.tjmHt | total :obj.nbJours | currency}}</td>
       <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva | currency}}</td>
-      <td appState [stateObj]='obj.state'>{{obj.state}}</td>
+
+      <!-- ici on ajoute le menu déroulant + événement changeState -->
+      <td appState [stateObj]='obj.state'>
+        <select (change)='changeState(obj, $event)'>
+          <option *ngFor='let state of states' [selected]='state === obj.state' [value]='state'>{{state}}</option>
+        </select>
+      </td>
+
     </tr>
   </tbody>
   <!-- faire passer le label + style + lien de redirection -->

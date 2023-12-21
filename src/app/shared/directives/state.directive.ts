@@ -5,10 +5,8 @@ import { Directive, HostBinding, Input } from '@angular/core';
   selector: '[appState]',
 })
 export class StateDirective {
-
   @Input() stateObj!: string;
   @HostBinding('class') tdClassName!: string;
-
 
   constructor() {
     // console.log('test depuis directive');
@@ -17,9 +15,14 @@ export class StateDirective {
 
   // LIFECYCLE HOOKS
   // ngOnInit()
-  ngOnInit(){
+  // déclenché une seule fois
+  // ngOnInit(){
+  //   //console.log(this.stateObj); // valeur disponible
+  //   this.tdClassName = `state-${this.stateObj.toLowerCase()}`;
+  // }
+
+  ngOnChanges() {
     //console.log(this.stateObj); // valeur disponible
     this.tdClassName = `state-${this.stateObj.toLowerCase()}`;
   }
-
 }

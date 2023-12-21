@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -16,6 +17,9 @@ export class PageListOrdersComponent {
   // création d'une propriété pour stocker observable
 
   public tab$!: Observable<Order[]>;
+
+  // pour menu déroulant
+  public states = Object.values(StateOrder);
 
   // ici tableau de string
   public headers: string[] = [
@@ -49,5 +53,25 @@ export class PageListOrdersComponent {
   public onEdit(id: number) {
     // redirection vers orders/edit
     this.router.navigate(['orders', 'edit', id]);
+  }
+
+  public changeState(obj: Order, event: Event) {
+    // console.log(event);
+    const target = event.target as HTMLSelectElement;
+    // console.log(target);
+    const newState = target.value as StateOrder;
+    console.log(newState);
+
+    // créer un nouvel obj de type Order
+    const newObj = new Order(obj);
+    newObj.state = newState;
+
+    // appel vers le service pour put
+    // order à jour
+    this.ordersService.update(newObj).subscribe((data) => {
+      console.log(data);
+      // obj = data;
+      Object.assign(obj, data);
+    });
   }
 }

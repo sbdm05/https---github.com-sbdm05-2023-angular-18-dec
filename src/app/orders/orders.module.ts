@@ -8,6 +8,8 @@ import { PageEditOrderComponent } from './pages/page-edit-order/page-edit-order.
 import { SharedModule } from '../shared/shared.module';
 import { FormOrderComponent } from './components/form-order/form-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PageDemoObservableFroidComponent } from './pages/page-demo-observable-froid/page-demo-observable-froid.component';
+import { PageDemoObservableChaudComponent } from './pages/page-demo-observable-chaud/page-demo-observable-chaud.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageAddOrderComponent,
     PageEditOrderComponent,
     FormOrderComponent,
+    PageDemoObservableFroidComponent,
+    PageDemoObservableChaudComponent,
   ],
   imports: [CommonModule, OrdersRoutingModule, SharedModule, ReactiveFormsModule],
   providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }],
