@@ -4,9 +4,9 @@
       "tjmHt": 1200,
       "nbJours": 10,
       "tva": 20,
-      "state": "OPTION",
+      "state": "CONFIRMED",
       "typePresta": "formation",
-      "client": "Modis",
+      "client": "nouveau 3",
       "comment": "",
       "id": 2
     },
@@ -14,9 +14,9 @@
       "tjmHt": 1200,
       "nbJours": 2,
       "tva": 20,
-      "state": "OPTION",
+      "state": "CANCELLED",
       "typePresta": "formation",
-      "client": "Capgemini",
+      "client": "nouveau 2",
       "comment": null,
       "id": 3
     },

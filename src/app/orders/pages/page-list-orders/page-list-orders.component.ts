@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -9,6 +13,7 @@ import { OrdersService } from '../../services/orders.service';
   selector: 'app-page-list-orders',
   templateUrl: './page-list-orders.component.html',
   styleUrls: ['./page-list-orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageListOrdersComponent {
   // créer un tableau vide
@@ -33,7 +38,11 @@ export class PageListOrdersComponent {
     'State',
   ];
 
-  constructor(private ordersService: OrdersService, private router: Router) {
+  constructor(
+    private ordersService: OrdersService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     //console.log(this.ordersService.sumUp(1, 2));
     // this.ordersService.getDatas().subscribe((data) => {
     //   console.log(data);
@@ -65,6 +74,9 @@ export class PageListOrdersComponent {
     // créer un nouvel obj de type Order
     const newObj = new Order(obj);
     newObj.state = newState;
+    // on change aussi cette valeur pour bien constater la mise à jour de obj
+    // (pas si évident à voir avec le menu déroulant)
+    newObj.client = 'nouveau';
 
     // appel vers le service pour put
     // order à jour
@@ -73,5 +85,15 @@ export class PageListOrdersComponent {
       // obj = data;
       Object.assign(obj, data);
     });
+  }
+
+  ngDoCheck() {
+    console.log('test depuis DoCheck');
+    /* à chaque modification d'une valeur dans le ts, cette fonction est
+    déclenchée. Le change detection d'angular permet de modifier le DOM en fonction des besoins.
+
+    ici, obj change de valeur (pas de référence). Ce changement sera détecté et permettra
+    l'obj de s'actualiser. On n'agit pas directement sur le DOM nous-mêmes.
+    */
   }
 }
